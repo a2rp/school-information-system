@@ -52,6 +52,8 @@ const Classes = ({ classes, students, onAddClass, onEditClass, onDeleteClass, on
     if (form.room.trim().length < 2) nextErrors.room = "Enter a room name or number.";
     if (Number(form.capacity) < 1 || Number(form.capacity) > 60) nextErrors.capacity = "Capacity must be between 1 and 60.";
     if (!form.subjects.trim()) nextErrors.subjects = "Add at least one subject.";
+    const enrolledCount = students.filter((student) => student.classId === editingClass?.id).length;
+    if (editingClass && Number(form.capacity) < enrolledCount) nextErrors.capacity = `At least ${enrolledCount} seats are needed for the current class list.`;
     const duplicate = classes.some((room) => room.id !== editingClass?.id && room.name.toLowerCase() === `grade ${form.grade.trim()} · ${form.section.trim()}`.toLowerCase());
     if (duplicate) nextErrors.grade = "This grade and section already exist.";
     setErrors(nextErrors);
