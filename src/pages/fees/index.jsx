@@ -95,7 +95,7 @@ const Fees = ({ students, classes, fees, onRecordPayment, onNotify }) => {
               return <tr key={fee.id}>
                 <td><div className={styles.studentCell}><span className={`${styles.avatar} ${styles[student.color]}`}>{getInitials(student.name)}</span><span><strong>{student.name}</strong><small>{student.id} · {room?.name || "Unassigned"}</small></span></div></td>
                 <td><span className={styles.termLabel}>{fee.term}</span></td>
-                <td><div className={styles.progressCell}><span><strong>{formatMoney(fee.paid)}</strong><small>of {formatMoney(fee.amount)}</small></span><i><b style={{ width: `${progress}%` }} /></i><small className={styles.balanceText}>{balance > 0 ? `${formatMoney(balance)} due` : "Fully paid"}</small></div></td>
+                <td><div className={styles.progressCell}><span><strong>{formatMoney(fee.paid)}</strong><small>of {formatMoney(fee.amount)}</small></span><i><b style={{ width: `${progress}%` }} /></i><small className={`${styles.balanceText} ${balance === 0 ? styles.balancePaid : ""}`}>{balance > 0 ? `${formatMoney(balance)} due` : "Fully paid"}</small></div></td>
                 <td><span className={styles.dueDate}>{new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" }).format(new Date(`${fee.dueDate}T00:00:00`))}</span></td>
                 <td><span className={`${styles.statusBadge} ${styles[status.toLowerCase()]}`}><i />{status}</span></td>
                 <td>{balance > 0 ? <button type="button" className={styles.recordButton} onClick={() => openPayment(fee)}>Record payment <FiArrowRight aria-hidden="true" /></button> : <span className={styles.settled}><FiCheckCircle aria-hidden="true" /> Settled</span>}</td>
