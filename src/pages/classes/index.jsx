@@ -109,7 +109,7 @@ const Classes = ({ classes, students, onAddClass, onEditClass, onDeleteClass, on
                   <article key={room.id} className={`${styles.classCard} ${selectedRoom?.id === room.id ? styles.selected : ""}`}>
                     <button type="button" className={styles.classCardMain} onClick={() => setSelectedId(room.id)} aria-pressed={selectedRoom?.id === room.id}>
                       <span className={`${styles.classBadge} ${styles[`badge${index % 3}`]}`}>{room.section}</span>
-                      <span className={styles.classDetails}><strong>{room.name}</strong><small>{room.teacher} · Room {room.room}</small><span className={styles.capacityLine}><i><b style={{ width: `${fill}%` }} /></i><em>{roster.length} of {room.capacity} seats</em></span></span>
+                      <span className={styles.classInfo}><strong>{room.name}</strong><small>{room.teacher} · Room {room.room}</small><span className={styles.capacityLine}><i><b style={{ width: `${fill}%` }} /></i><em>{roster.length} of {room.capacity} seats</em></span></span>
                       <FiChevronRight className={styles.cardArrow} aria-hidden="true" />
                     </button>
                     <div className={styles.subjects}>{room.subjects.map((subject) => <span key={subject}>{subject}</span>)}</div>

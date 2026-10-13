@@ -99,7 +99,7 @@
   .badge0 { background: #e8eef6; }
   .badge1 { background: #e8f2ed; color: var(--green); }
   .badge2 { background: #fbf2e2; color: var(--amber); }
-  .classDetails { min-width: 0; flex: 1; display: grid; gap: 3px; strong { color: var(--ink); font-size: 15px; } small { color: var(--muted); font-size: 13px; } }
+  .classInfo { min-width: 0; flex: 1; display: grid; gap: 3px; strong { color: var(--ink); font-size: 15px; } small { color: var(--muted); font-size: 13px; } }
   .cardArrow { flex: 0 0 auto; color: var(--subtle); font-size: 18px; }
 
   .capacityLine {
