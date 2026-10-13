@@ -1,0 +1,563 @@
+.page {
+  width: min(1320px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 38px 0 56px;
+
+  .welcome {
+    min-height: 290px;
+    padding: 36px 42px;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+    align-items: center;
+    border-radius: 24px;
+    color: white;
+    background: var(--navy);
+  }
+
+  .welcomeCopy {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+
+    .date {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #dce88c;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      max-width: 620px;
+      margin: 17px 0 10px;
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.06;
+      letter-spacing: -1.8px;
+    }
+
+    .intro {
+      max-width: 570px;
+      color: rgb(255 255 255 / 74%);
+      font-size: 16px;
+    }
+  }
+
+  .welcomeActions {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .primaryButton,
+  .textButton {
+    min-height: 46px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    border-radius: 11px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .primaryButton {
+    border: 1px solid var(--lime);
+    background: var(--lime);
+    color: var(--navy);
+    &:hover { background: #e8f0ad; }
+  }
+
+  .textButton {
+    border: 1px solid rgb(255 255 255 / 30%);
+    background: transparent;
+    color: white;
+    &:hover { background: rgb(255 255 255 / 8%); }
+  }
+
+  .schoolMark {
+    min-height: 230px;
+    position: relative;
+    align-self: stretch;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+  }
+
+  .schoolMark::before {
+    width: 290px;
+    height: 290px;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgb(255 255 255 / 14%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 32px rgb(255 255 255 / 3%), 0 0 0 64px rgb(255 255 255 / 2%);
+    transform: translate(-50%, -50%);
+    content: "";
+  }
+
+  .sun {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 32px;
+    right: 65px;
+    border-radius: 50%;
+    background: var(--lime);
+    box-shadow: 0 0 0 12px rgb(220 232 140 / 10%);
+  }
+
+  .schoolBuilding {
+    width: 218px;
+    height: 128px;
+    position: relative;
+    margin-top: 28px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 16px;
+    border: 2px solid rgb(255 255 255 / 66%);
+    border-bottom: 0;
+    border-radius: 7px 7px 0 0;
+    background: rgb(255 255 255 / 9%);
+
+    &::before {
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: -56px;
+      left: -2px;
+      border-right: 109px solid transparent;
+      border-bottom: 56px solid rgb(255 255 255 / 66%);
+      border-left: 109px solid transparent;
+      content: "";
+    }
+
+    &::after {
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: -52px;
+      left: 5px;
+      border-right: 100px solid transparent;
+      border-bottom: 50px solid #254664;
+      border-left: 100px solid transparent;
+      content: "";
+    }
+
+    i {
+      width: 29px;
+      height: 48px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 0;
+      border: 1px solid rgb(255 255 255 / 65%);
+      border-radius: 5px 5px 0 0;
+      background: rgb(220 232 140 / 68%);
+    }
+
+    i:nth-child(2) {
+      width: 35px;
+      height: 73px;
+      border-color: var(--lime);
+      background: var(--lime);
+    }
+  }
+
+  .ground {
+    width: min(320px, 100%);
+    height: 1px;
+    position: absolute;
+    bottom: 43px;
+    background: rgb(255 255 255 / 35%);
+  }
+
+  .schoolLabel {
+    position: absolute;
+    right: 6px;
+    bottom: 13px;
+    color: rgb(255 255 255 / 56%);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+  }
+
+  .summaryGrid {
+    margin: 20px 0 28px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .summaryCard {
+    min-width: 0;
+    min-height: 165px;
+    padding: 19px 20px;
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    grid-template-rows: auto 1fr auto;
+    align-items: center;
+    gap: 0 12px;
+    text-align: left;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: white;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgb(25 54 83 / 7%);
+    }
+
+    > strong {
+      grid-column: 2;
+      align-self: start;
+      color: var(--ink);
+      font-size: 31px;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+
+    > small {
+      grid-column: 1 / -1;
+      margin-top: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+
+      svg { color: var(--blue); font-size: 15px; }
+    }
+  }
+
+  .summaryIcon {
+    width: 42px;
+    height: 42px;
+    grid-row: 1 / span 2;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    font-size: 19px;
+  }
+
+  .blueIcon { background: #e8eef6; color: #315f9b; }
+  .greenIcon { background: #e8f2ed; color: #427e61; }
+  .amberIcon { background: #fbf2e2; color: #a66b1d; }
+  .purpleIcon { background: #eeebf6; color: #6f5d9f; }
+
+  .summaryLabel {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 650;
+    line-height: 1.3;
+  }
+
+  .outOf {
+    display: inline;
+    color: var(--subtle);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .registerSection {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: white;
+  }
+
+  .registerHead {
+    padding: 24px 26px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sectionLabel {
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+
+  .registerHead h2,
+  .noteCard h2,
+  .feeTitle h2 {
+    margin: 5px 0 3px;
+    color: var(--ink);
+    font-size: 21px;
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+  }
+
+  .sectionDescription {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .registerTools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .classSelect {
+    min-height: 43px;
+    padding: 0 11px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: white;
+
+    span { color: var(--muted); font-size: 13px; }
+    select { max-width: 150px; min-height: 39px; border: 0; outline: 0; background: transparent; font-size: 14px; font-weight: 700; }
+  }
+
+  .openRegister,
+  .viewAll,
+  .feeCard > button,
+  .noClasses button {
+    min-height: 43px;
+    padding: 0 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: white;
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 700;
+    &:hover { border-color: var(--blue); background: var(--blue-soft); }
+  }
+
+  .registerBody {
+    padding: 0 26px 17px;
+  }
+
+  .classNote {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--line);
+
+    > span:nth-child(2) { display: grid; gap: 2px; }
+    strong { color: var(--ink); font-size: 14px; }
+    small { color: var(--muted); font-size: 13px; }
+  }
+
+  .teacherBadge {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--blue-soft);
+    color: var(--blue);
+    font-size: 18px;
+  }
+
+  .rollSummary {
+    margin-left: auto;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: var(--green-soft);
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .studentRows {
+    display: grid;
+  }
+
+  .studentRow {
+    min-height: 65px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #edf0f4;
+  }
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .blue { background: #e4edf6; color: #335f90; }
+  .rose { background: #f7e9e9; color: #a55259; }
+  .gold { background: #f7efd9; color: #9b7529; }
+  .green { background: #e4f0e9; color: #477958; }
+  .violet { background: #edeaf5; color: #67568e; }
+
+  .studentName {
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+
+    strong { overflow: hidden; color: var(--ink); font-size: 14px; text-overflow: ellipsis; white-space: nowrap; }
+    small { color: var(--muted); font-size: 13px; }
+  }
+
+  .attendanceStatus {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 650;
+
+    i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    &.present { color: var(--green); }
+    &.late { color: var(--amber); }
+    &.absent { color: var(--red); }
+    &.pending { color: var(--subtle); }
+  }
+
+  .viewAll {
+    min-height: 39px;
+    margin-top: 14px;
+    border-color: transparent;
+    padding-left: 0;
+  }
+
+  .emptyClass,
+  .noClasses {
+    padding: 28px 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .noClasses {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 24px 26px;
+  }
+
+  .bottomGrid {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 18px;
+  }
+
+  .noteCard,
+  .feeCard {
+    min-height: 190px;
+    padding: 23px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: white;
+  }
+
+  .noteCard {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    .noteIcon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--lime);
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    p:last-child { max-width: 500px; margin-top: 8px; color: var(--muted); font-size: 14px; }
+
+    > button {
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      margin-left: auto;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: white;
+      color: var(--navy);
+      font-size: 18px;
+      &:hover { background: var(--blue-soft); border-color: var(--blue); }
+    }
+  }
+
+  .feeCard {
+    .feeTitle { display: flex; align-items: center; justify-content: space-between; }
+    .feeTitle > span { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; background: var(--amber-soft); color: var(--amber); font-size: 18px; }
+    .feeAmount { display: block; margin-top: 14px; color: var(--ink); font-size: 27px; letter-spacing: -0.7px; }
+    > p { color: var(--muted); font-size: 13px; }
+    .feeBar { height: 7px; margin-top: 12px; overflow: hidden; border-radius: 99px; background: #edf0f4; }
+    .feeBar i { height: 100%; display: block; border-radius: inherit; background: var(--lime); }
+    > button { margin-top: 12px; min-height: 34px; padding: 0; border-color: transparent; }
+  }
+
+  @media (max-width: 980px) {
+    .summaryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .welcome { grid-template-columns: 1.3fr 0.7fr; }
+    .bottomGrid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    width: calc(100% - 32px);
+    padding-top: 24px;
+
+    .welcome { min-height: 0; padding: 28px 23px; grid-template-columns: 1fr; }
+    .schoolMark { display: none; }
+    .welcomeCopy h1 { font-size: 36px; letter-spacing: -1.1px; }
+    .registerHead { align-items: flex-start; flex-direction: column; padding: 21px 18px 17px; }
+    .registerTools { width: 100%; flex-wrap: wrap; }
+    .classSelect { flex: 1; min-width: 180px; justify-content: space-between; }
+    .classSelect select { flex: 1; max-width: 190px; }
+    .registerBody { padding: 0 18px 17px; }
+    .noClasses { align-items: flex-start; flex-direction: column; padding: 20px 18px; }
+    .rollSummary { font-size: 13px; }
+  }
+
+  @media (max-width: 480px) {
+    .summaryGrid { gap: 10px; }
+    .summaryCard { min-height: 154px; padding: 14px; grid-template-columns: 36px 1fr; gap: 0 9px; }
+    .summaryIcon { width: 36px; height: 36px; font-size: 17px; }
+    .summaryLabel { font-size: 13px; }
+    .summaryCard > strong { font-size: 27px; }
+    .summaryCard > small { align-items: flex-start; font-size: 13px; }
+    .registerTools > button { flex: 1; }
+    .classNote { gap: 9px; }
+    .classNote small { max-width: 170px; }
+    .rollSummary { max-width: 120px; padding: 6px 8px; text-align: center; }
+    .studentRow { gap: 9px; }
+    .studentName strong { max-width: 145px; }
+    .noteCard { padding: 19px; gap: 11px; }
+    .noteIcon { width: 36px !important; height: 36px !important; }
+    .feeCard { padding: 19px; }
+  }
+}
