@@ -62,7 +62,7 @@ const Attendance = ({ students, classes, attendance, onUpdateAttendance, onMarkA
 
         {classStudents.length ? (
           <div className={styles.roster}>
-            <div className={styles.rosterHead}><span>Student</span><span>Arrival status</span></div>
+            <div className={styles.rosterHead}><span className={styles.studentHeader}>Student</span><span>Arrival status</span></div>
             {classStudents.map((student, index) => {
               const value = dateMarks[student.id] || "";
               return (

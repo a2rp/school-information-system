@@ -171,6 +171,7 @@
     font-weight: 700;
     border-bottom: 1px solid var(--line);
     > span:last-child { text-align: right; }
+    .studentHeader { grid-column: 1 / 4; }
   }
 
   .rosterRow {
