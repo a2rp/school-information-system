@@ -1,0 +1,230 @@
+.header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  transition: transform 220ms ease;
+
+  &.hidden {
+    transform: translateY(-100%);
+  }
+
+  &.visible {
+    transform: translateY(0);
+  }
+
+  .topRow {
+    width: min(1320px, calc(100% - 64px));
+    min-height: 76px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ink);
+
+    .brandIcon {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--navy);
+      font-size: 21px;
+    }
+
+    strong,
+    small {
+      display: block;
+    }
+
+    strong {
+      font-size: 18px;
+      line-height: 1.1;
+      letter-spacing: -0.4px;
+    }
+
+    small {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+    }
+  }
+
+  .topActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .repository,
+  .addButton,
+  .menuButton,
+  .mobileAdd {
+    min-height: 42px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 0 14px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .repository {
+    color: var(--ink);
+    border: 1px solid var(--line);
+    background: white;
+
+    svg {
+      font-size: 17px;
+    }
+
+    &:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+  }
+
+  .addButton,
+  .mobileAdd {
+    color: white;
+    background: var(--navy);
+    border: 1px solid var(--navy);
+
+    &:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    svg {
+      font-size: 17px;
+    }
+  }
+
+  .menuButton,
+  .mobileAdd {
+    display: none;
+  }
+
+  .navigation {
+    width: min(1320px, calc(100% - 64px));
+    min-height: 52px;
+    margin: 0 auto;
+    display: flex;
+    align-items: stretch;
+    gap: 30px;
+    border-top: 1px solid var(--line);
+  }
+
+  .navLink {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 650;
+
+    &:hover,
+    &.active {
+      color: var(--navy);
+    }
+
+    &.active::after {
+      position: absolute;
+      right: 0;
+      bottom: -1px;
+      left: 0;
+      height: 3px;
+      border-radius: 3px 3px 0 0;
+      background: var(--lime);
+      content: "";
+    }
+  }
+
+  .navHint {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    .topRow,
+    .navigation {
+      width: calc(100% - 32px);
+    }
+
+    .topRow {
+      min-height: 68px;
+    }
+
+    .topActions {
+      gap: 8px;
+    }
+
+    .repository {
+      width: 42px;
+      padding: 0;
+
+      span {
+        display: none;
+      }
+    }
+
+    .addButton {
+      display: none;
+    }
+
+    .menuButton {
+      width: 42px;
+      padding: 0;
+      display: inline-flex;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      font-size: 19px;
+    }
+
+    .navigation {
+      display: none;
+      padding: 8px 0 16px;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--line);
+
+      &.navigationOpen {
+        display: flex;
+      }
+    }
+
+    .navLink {
+      min-height: 46px;
+      padding: 0 12px;
+      border-radius: 10px;
+
+      &.active::after {
+        top: 8px;
+        right: auto;
+        bottom: 8px;
+        left: 0;
+        width: 3px;
+        height: auto;
+        border-radius: 0 3px 3px 0;
+      }
+    }
+
+    .mobileAdd {
+      display: inline-flex;
+      margin-top: 6px;
+    }
+  }
+}
