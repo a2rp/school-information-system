@@ -1,23 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FiCheck, FiUser } from "react-icons/fi";
 import styles from "./styles.module.css";
 
 const emptyForm = { name: "", classId: "", guardian: "", email: "", phone: "" };
 
 const StudentForm = ({ student, classes, onSave, onCancel }) => {
-  const [form, setForm] = useState(emptyForm);
+  const [form, setForm] = useState(() => student ? {
+    name: student.name,
+    classId: student.classId,
+    guardian: student.guardian,
+    email: student.email,
+    phone: student.phone,
+  } : { ...emptyForm, classId: classes[0]?.id || "" });
   const [errors, setErrors] = useState({});
-
-  useEffect(() => {
-    setForm(student ? {
-      name: student.name,
-      classId: student.classId,
-      guardian: student.guardian,
-      email: student.email,
-      phone: student.phone,
-    } : { ...emptyForm, classId: classes[0]?.id || "" });
-    setErrors({});
-  }, [student, classes]);
 
   const updateField = (event) => {
     const { name, value } = event.target;
