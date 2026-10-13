@@ -1,0 +1,50 @@
+.confirmation {
+  .warningIcon {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 14px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: var(--red-soft);
+    color: var(--red);
+    font-size: 21px;
+  }
+
+  p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .actions {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  button {
+    min-height: 43px;
+    padding: 0 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .cancelButton {
+    background: white;
+    color: var(--ink);
+
+    &:hover { background: var(--paper); }
+  }
+
+  .removeButton {
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
+
+    &:hover { background: #883d3d; }
+  }
+}
