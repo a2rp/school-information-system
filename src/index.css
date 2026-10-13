@@ -1,0 +1,141 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #182b41;
+  background: #f1f3f7;
+  font-size: 16px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+
+  --ink: #182b41;
+  --navy: #193653;
+  --blue: #315f9b;
+  --blue-soft: #e8eef6;
+  --paper: #f1f3f7;
+  --line: #dfe5ed;
+  --muted: #64758a;
+  --subtle: #8995a3;
+  --lime: #dce88c;
+  --green: #427e61;
+  --green-soft: #e8f2ed;
+  --red: #a94c4c;
+  --red-soft: #f8eaea;
+  --amber: #a66b1d;
+  --amber-soft: #fbf2e2;
+
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font-size: 14px;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+button:disabled,
+select:disabled {
+  cursor: not-allowed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active,
+a:visited {
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+}
+
+img {
+  max-width: 100%;
+}
+
+input,
+select,
+textarea {
+  min-height: 44px;
+}
+
+::selection {
+  color: var(--navy);
+  background: var(--lime);
+}
+
+:focus-visible {
+  outline: 3px solid rgb(49 95 155 / 40%);
+  outline-offset: 2px;
+}
+
+.os-theme-bellwether {
+  --os-size: 9px;
+  --os-padding-perpendicular: 2px;
+  --os-padding-axis: 2px;
+  --os-track-border-radius: 999px;
+  --os-handle-border-radius: 999px;
+  --os-handle-bg: rgb(49 95 155 / 32%);
+  --os-handle-bg-hover: rgb(49 95 155 / 55%);
+  --os-handle-bg-active: rgb(25 54 83 / 78%);
+}
+
+.route-loading {
+  min-height: 55vh;
+  display: grid;
+  place-items: center;
+}
