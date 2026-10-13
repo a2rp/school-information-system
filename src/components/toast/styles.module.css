@@ -1,3 +1,8 @@
+@keyframes toastShow {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .toast {
   position: fixed;
   z-index: 80;
@@ -16,7 +21,7 @@
   box-shadow: 0 12px 36px rgb(19 38 61 / 15%);
   font-size: 14px;
   font-weight: 650;
-  animation: show 180ms ease-out;
+  animation: toastShow 180ms ease-out;
 
   > svg {
     flex: 0 0 auto;
@@ -49,11 +54,6 @@
   &.success > svg { color: var(--green); }
   &.error > svg { color: var(--red); }
   &.info > svg { color: var(--blue); }
-
-  @keyframes show {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
 
   @media (max-width: 560px) {
     right: 16px;
