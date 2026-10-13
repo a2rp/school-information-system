@@ -121,7 +121,7 @@
   .rosterPreview { margin-top: 21px; padding-top: 17px; border-top: 1px solid var(--line); }
   .rosterTitle { margin-bottom: 7px; display: flex; align-items: center; justify-content: space-between; strong { color: var(--ink); font-size: 14px; } span { color: var(--muted); font-size: 13px; } }
   .miniStudent { min-height: 50px; display: flex; align-items: center; gap: 9px; border-bottom: 1px solid #edf0f4; &:last-of-type { border-bottom: 0; } > span:last-child { min-width: 0; display: grid; gap: 1px; } strong { overflow: hidden; color: var(--ink); font-size: 14px; text-overflow: ellipsis; white-space: nowrap; } small { overflow: hidden; color: var(--muted); font-size: 13px; text-overflow: ellipsis; white-space: nowrap; } }
-  .avatar { width: 33px; height: 33px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; font-size: 12px; font-weight: 800; }
+  .avatar { width: 33px; height: 33px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; font-size: 13px; font-weight: 800; }
   .blue { background: #e4edf6; color: #335f90; }
   .rose { background: #f7e9e9; color: #a55259; }
   .gold { background: #f7efd9; color: #9b7529; }
