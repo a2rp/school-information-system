@@ -12,13 +12,10 @@ const navItems = [
 ];
 
 const Header = ({ onAddStudent }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
   const location = useLocation();
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
+  const [openPath, setOpenPath] = useState(null);
+  const menuOpen = openPath === location.pathname;
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     let previousY = window.scrollY;
@@ -46,7 +43,7 @@ const Header = ({ onAddStudent }) => {
           <button type="button" className={styles.addButton} onClick={onAddStudent}>
             <FiPlus aria-hidden="true" /><span>New student</span>
           </button>
-          <button type="button" className={styles.menuButton} aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
+          <button type="button" className={styles.menuButton} aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setOpenPath(menuOpen ? null : location.pathname)}>
             {menuOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
           </button>
         </div>
