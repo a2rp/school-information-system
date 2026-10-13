@@ -1,0 +1,62 @@
+.toast {
+  position: fixed;
+  z-index: 80;
+  right: 24px;
+  bottom: 24px;
+  width: min(430px, calc(100vw - 32px));
+  min-height: 58px;
+  padding: 12px 13px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
+  color: var(--ink);
+  box-shadow: 0 12px 36px rgb(19 38 61 / 15%);
+  font-size: 14px;
+  font-weight: 650;
+  animation: show 180ms ease-out;
+
+  > svg {
+    flex: 0 0 auto;
+    font-size: 19px;
+  }
+
+  span {
+    flex: 1;
+    line-height: 1.45;
+  }
+
+  button {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 16px;
+
+    &:hover {
+      background: var(--paper);
+      color: var(--ink);
+    }
+  }
+
+  &.success > svg { color: var(--green); }
+  &.error > svg { color: var(--red); }
+  &.info > svg { color: var(--blue); }
+
+  @keyframes show {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 560px) {
+    right: 16px;
+    bottom: 16px;
+  }
+}
