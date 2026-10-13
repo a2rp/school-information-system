@@ -1,0 +1,100 @@
+.backdrop {
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  background: rgb(18 31 48 / 52%);
+  backdrop-filter: blur(4px);
+  animation: appear 140ms ease-out;
+
+  .dialog {
+    width: min(540px, 100%);
+    max-height: min(780px, calc(100dvh - 48px));
+    overflow: auto;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 24px 80px rgb(18 31 48 / 22%);
+    animation: rise 180ms ease-out;
+
+    &.large {
+      width: min(760px, 100%);
+    }
+  }
+
+  .dialogHeader {
+    padding: 24px 26px 19px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    border-bottom: 1px solid var(--line);
+
+    h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 21px;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+    }
+
+    p {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  .closeButton {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: white;
+    color: var(--muted);
+    font-size: 18px;
+
+    &:hover {
+      color: var(--ink);
+      background: var(--paper);
+    }
+  }
+
+  .dialogBody {
+    padding: 24px 26px 26px;
+  }
+
+  @keyframes appear {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px) scale(0.99); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @media (max-width: 560px) {
+    padding: 12px;
+
+    .dialog {
+      max-height: calc(100dvh - 24px);
+      border-radius: 16px;
+    }
+
+    .dialogHeader {
+      padding: 19px 18px 16px;
+    }
+
+    .dialogBody {
+      padding: 20px 18px;
+    }
+  }
+}
