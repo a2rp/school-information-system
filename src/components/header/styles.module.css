@@ -153,10 +153,6 @@
     }
   }
 
-  .navHint {
-    display: none;
-  }
-
   @media (max-width: 700px) {
     .topRow,
     .navigation {

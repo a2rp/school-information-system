@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FiBookOpen, FiChevronDown, FiGithub, FiMenu, FiPlus, FiX } from "react-icons/fi";
+import { FiBookOpen, FiGithub, FiMenu, FiPlus, FiX } from "react-icons/fi";
 import { NavLink, useLocation } from "react-router-dom";
 import styles from "./styles.module.css";
 
@@ -55,7 +55,6 @@ const Header = ({ onAddStudent }) => {
         {navItems.map((item) => (
           <NavLink key={item.to} to={item.to} className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ""}`}>
             {item.label}
-            {item.label === "Students" && <FiChevronDown className={styles.navHint} aria-hidden="true" />}
           </NavLink>
         ))}
         <button type="button" className={styles.mobileAdd} onClick={onAddStudent}><FiPlus aria-hidden="true" /> New student</button>
