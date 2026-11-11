@@ -48,15 +48,16 @@ const App = () => {
       notify(`${form.name}’s school record has been updated.`);
     } else {
       const lastId = students.reduce((max, student) => Math.max(max, Number(student.id.replace("BW-", "")) || 0), 2600);
+      const nextId = lastId + 1;
       const student = {
         ...form,
-        id: `BW-${lastId + 1}`,
+        id: `BW-${nextId}`,
         joined: todayKey(),
         status: "Active",
         color: ["blue", "rose", "gold", "green", "violet"][students.length % 5],
       };
       setStudents((list) => [...list, student]);
-      setFees((list) => [...list, { id: `F-${String(lastId + 1).slice(-4)}`, studentId: student.id, term: "Term 1 · 2026", amount: 18500, paid: 0, dueDate: "2026-10-20" }]);
+      setFees((list) => [...list, { id: `F-${nextId}`, studentId: student.id, term: "Term 1 · 2026", amount: 18500, paid: 0, dueDate: "2026-10-20" }]);
       notify(`${form.name} has been added to ${room?.name || "the student directory"}.`);
     }
     setStudentDialog(null);

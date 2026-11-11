@@ -35,7 +35,7 @@ const Attendance = ({ students, classes, attendance, onUpdateAttendance, onMarkA
       <section className={styles.classStrip}>
         <div className={styles.filters}>
           <label><span>Class</span><select value={selectedClass} onChange={(event) => setSelectedClass(event.target.value)}><option value="">Choose a class</option>{classes.map((classroom) => <option key={classroom.id} value={classroom.id}>{classroom.name}</option>)}</select></label>
-          <label><span>Date</span><div><FiCalendar aria-hidden="true" /><input type="date" value={selectedDate} onChange={(event) => setSelectedDate(event.target.value)} aria-label="Attendance date" /></div></label>
+          <label><span>Date</span><div><FiCalendar aria-hidden="true" /><input required type="date" value={selectedDate} onChange={(event) => { if (event.target.value) setSelectedDate(event.target.value); }} aria-label="Attendance date" /></div></label>
         </div>
         <div className={styles.classDescription}>
           <span className={styles.classIcon}><FiUsers aria-hidden="true" /></span>

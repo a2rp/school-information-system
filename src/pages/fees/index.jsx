@@ -38,7 +38,7 @@ const Fees = ({ students, classes, fees, onRecordPayment, onNotify }) => {
     event.preventDefault();
     const amountNumber = Number(amount);
     const balance = paymentTarget.amount - paymentTarget.paid;
-    if (!Number.isFinite(amountNumber) || amountNumber <= 0) { setPaymentError("Enter an amount greater than zero."); return; }
+    if (!Number.isInteger(amountNumber) || amountNumber <= 0) { setPaymentError("Enter a whole amount greater than zero."); return; }
     if (amountNumber > balance) { setPaymentError(`This account has ${formatMoney(balance)} remaining. Enter that amount or less.`); return; }
     onRecordPayment(paymentTarget.id, amountNumber);
     onNotify(`${formatMoney(amountNumber)} demo payment recorded. No real transaction was processed.`, "success");
@@ -52,14 +52,21 @@ const Fees = ({ students, classes, fees, onRecordPayment, onNotify }) => {
       const room = classes.find((classroom) => classroom.id === student.classId);
       rows.push([student.name, student.id, room?.name || "Unassigned", fee.term, fee.amount, fee.paid, fee.amount - fee.paid, fee.dueDate, feeStatus(fee)]);
     });
-    const csv = rows.map((row) => row.map((cell) => `"${String(cell).replaceAll('"', '""')}"`).join(",")).join("\r\n");
+    const csv = rows.map((row) => row.map((cell) => {
+      const value = String(cell);
+      const safeValue = typeof cell === "string" && /^[\s]*[=+\-@]/.test(value) ? `'${value}` : value;
+      return `"${safeValue.replaceAll('"', '""')}"`;
+    }).join(",")).join("\r\n");
     const blob = new Blob([`\uFEFF${csv}`], { type: "text/csv;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
     link.download = `bellwether-fees-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.style.display = "none";
+    document.body.appendChild(link);
     link.click();
-    URL.revokeObjectURL(url);
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
     onNotify(`Downloaded ${visibleFees.length} fee records as CSV.`, "success");
   };
 

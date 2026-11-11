@@ -46,14 +46,15 @@ const Classes = ({ classes, students, onAddClass, onEditClass, onDeleteClass, on
   const submitClass = (event) => {
     event.preventDefault();
     const nextErrors = {};
+    const capacity = Number(form.capacity);
     if (!form.grade.trim()) nextErrors.grade = "Enter a grade number or name.";
     if (!form.section.trim()) nextErrors.section = "Enter a class section.";
     if (form.teacher.trim().length < 2) nextErrors.teacher = "Enter the class teacher's name.";
     if (form.room.trim().length < 2) nextErrors.room = "Enter a room name or number.";
-    if (Number(form.capacity) < 1 || Number(form.capacity) > 60) nextErrors.capacity = "Capacity must be between 1 and 60.";
+    if (!Number.isInteger(capacity) || capacity < 1 || capacity > 60) nextErrors.capacity = "Capacity must be a whole number between 1 and 60.";
     if (!form.subjects.trim()) nextErrors.subjects = "Add at least one subject.";
     const enrolledCount = students.filter((student) => student.classId === editingClass?.id).length;
-    if (editingClass && Number(form.capacity) < enrolledCount) nextErrors.capacity = `At least ${enrolledCount} seats are needed for the current class list.`;
+    if (editingClass && Number.isInteger(capacity) && capacity < enrolledCount) nextErrors.capacity = `At least ${enrolledCount} seats are needed for the current class list.`;
     const duplicate = classes.some((room) => room.id !== editingClass?.id && room.name.toLowerCase() === `grade ${form.grade.trim()} · ${form.section.trim()}`.toLowerCase());
     if (duplicate) nextErrors.grade = "This grade and section already exist.";
     setErrors(nextErrors);
@@ -65,7 +66,7 @@ const Classes = ({ classes, students, onAddClass, onEditClass, onDeleteClass, on
       section: form.section.trim().toUpperCase(),
       teacher: form.teacher.trim(),
       room: form.room.trim(),
-      capacity: Number(form.capacity),
+      capacity,
       subjects: [...new Set(form.subjects.split(",").map((subject) => subject.trim()).filter(Boolean))],
     };
     if (editingClass) onEditClass(updated);
@@ -137,7 +138,7 @@ const Classes = ({ classes, students, onAddClass, onEditClass, onDeleteClass, on
             <label><span>Section</span><input value={form.section} onChange={(event) => setForm({ ...form, section: event.target.value })} placeholder="e.g. A" aria-invalid={Boolean(errors.section)} />{errors.section && <small>{errors.section}</small>}</label>
             <label><span>Class teacher</span><input value={form.teacher} onChange={(event) => setForm({ ...form, teacher: event.target.value })} placeholder="Teacher name" aria-invalid={Boolean(errors.teacher)} />{errors.teacher && <small>{errors.teacher}</small>}</label>
             <label><span>Room</span><input value={form.room} onChange={(event) => setForm({ ...form, room: event.target.value })} placeholder="e.g. West 102" aria-invalid={Boolean(errors.room)} />{errors.room && <small>{errors.room}</small>}</label>
-            <label><span>Seat capacity</span><input type="number" min="1" max="60" value={form.capacity} onChange={(event) => setForm({ ...form, capacity: event.target.value })} aria-invalid={Boolean(errors.capacity)} />{errors.capacity && <small>{errors.capacity}</small>}</label>
+            <label><span>Seat capacity</span><input type="number" min="1" max="60" step="1" value={form.capacity} onChange={(event) => setForm({ ...form, capacity: event.target.value })} aria-invalid={Boolean(errors.capacity)} />{errors.capacity && <small>{errors.capacity}</small>}</label>
             <label className={styles.subjectField}><span>Subjects, separated by commas</span><input value={form.subjects} onChange={(event) => setForm({ ...form, subjects: event.target.value })} placeholder="English, Mathematics, Science" aria-invalid={Boolean(errors.subjects)} />{errors.subjects && <small>{errors.subjects}</small>}</label>
           </div>
           <div className={styles.formActions}><button type="button" onClick={() => setDialogMode("")}>Cancel</button><button type="submit" className={styles.saveClass}><FiCheck aria-hidden="true" /> {editingClass ? "Save class" : "Create class"}</button></div>
